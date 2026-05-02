@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brec Buster — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0a0f1a;
+    --bg-secondary: #111827;
+    --bg-card: #1a2235;
+    --bg-card-hover: #1f2a40;
+    --accent: #3b82f6;
+    --accent-soft: rgba(59, 130, 246, 0.12);
+    --accent-glow: rgba(59, 130, 246, 0.25);
+    --text-primary: #e8ecf4;
+    --text-secondary: #8b95a8;
+    --text-muted: #5a6478;
+    --border: rgba(255,255,255,0.06);
+    --border-accent: rgba(59, 130, 246, 0.3);
+    --green: #10b981;
+    --amber: #f59e0b;
+    --red: #ef4444;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(10, 15, 26, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+  }
+  nav .inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  nav .logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+  nav .logo span { color: var(--text-muted); }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+  nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--text-primary); }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 6rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .section-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+  .hero-greeting {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.05em;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.08;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.03em;
+  }
+  .hero h1 .accent { color: var(--accent); }
+  .hero-description {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    max-width: 540px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .hero-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .hero-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+  }
+  .btn-outline {
+    border: 1px solid var(--border-accent);
+    color: var(--accent);
+    background: transparent;
+  }
+  .btn-outline:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+  }
+
+  .hero-meta {
+    margin-top: 4rem;
+    display: flex;
+    gap: 3rem;
+  }
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .hero-meta-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .hero-meta-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── ABOUT ─── */
+  #about { background: var(--bg-secondary); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+    font-size: 1.02rem;
+    line-height: 1.8;
+  }
+  .about-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .about-detail-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .about-detail-card .label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+  .about-detail-card .value {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  /* ─── EXPERIENCE ─── */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--border));
+    border-radius: 1px;
+  }
+  .timeline-item {
+    position: relative;
+    padding-bottom: 3rem;
+  }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    border: 2px solid var(--accent);
+    transform: translateX(-5px);
+  }
+  .timeline-item.current::before {
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent-glow);
+  }
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .timeline-role {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  .timeline-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  .timeline-company {
+    color: var(--accent);
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+  }
+  .timeline-location {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+  }
+  .timeline-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+  .timeline-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    letter-spacing: 0.03em;
+  }
+
+  /* ─── PROJECTS ─── */
+  #projects { background: var(--bg-secondary); }
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .project-card:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+  .project-banner {
+    height: 200px;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 50%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+  }
+  .project-banner-text {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  .project-banner-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .project-banner-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .project-body { padding: 2rem; }
+  .project-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--amber);
+    margin-bottom: 1rem;
+  }
+  .project-body h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+  .project-body p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+  .project-highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .highlight {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+  }
+  .highlight-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    flex-shrink: 0;
+  }
+  .project-links {
+    display: flex;
+    gap: 1rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+  .project-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--accent);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s;
+  }
+  .project-links a:hover { color: var(--text-primary); }
+
+  /* ─── SKILLS ─── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .skill-category {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2rem;
+    transition: border-color 0.3s;
+  }
+  .skill-category:hover { border-color: var(--border-accent); }
+  .skill-category-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--accent-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 1.25rem;
+  }
+  .skill-category h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .skill-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+  .skill-item::before {
+    content: '›';
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  /* ─── EDUCATION ─── */
+  #education { background: var(--bg-secondary); }
+  .edu-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  .edu-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--amber), #d97706);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+  }
+  .edu-info h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  .edu-degree {
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+  .edu-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+  .edu-coursework-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+  .edu-coursework {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* ─── CONTACT ─── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .contact-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.3s;
+    display: block;
+  }
+  .contact-card:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  }
+  .contact-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  .contact-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .contact-card p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .project-highlights { grid-template-columns: 1fr; }
+    .hero-meta { flex-direction: column; gap: 1.5rem; }
+    .edu-card { grid-template-columns: 1fr; }
+    nav ul { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="inner">
+    <div class="logo">brec<span>.buster</span></div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-greeting">// Hello, I'm</div>
+    <h1>Brec <span class="accent">Buster</span></h1>
+    <p class="hero-description">
+      Cybersecurity professional and IT specialist with hands-on experience in identity & access management, network security, and IoT systems. Graduating from Wichita State University in May 2026.
+    </p>
+    <div class="hero-links">
+      <a href="https://github.com/SiegwardsHaven" class="btn-primary">&#9901; GitHub</a>
+      <a href="https://linkedin.com/in/brec-buster-862a06229" class="btn-outline">&#8594; LinkedIn</a>
+      <a href="#contact" class="btn-outline">&#9993; Contact</a>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-value">3.5+</span>
+        <span class="hero-meta-label">Years Experience</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-value">2</span>
+        <span class="hero-meta-label">Industry Roles</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-value">May '26</span>
+        <span class="hero-meta-label">Graduation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">Building secure systems from the ground up.</h2>
+        <p>
+          I'm a cybersecurity-focused IT professional with a passion for building and defending systems. Over the past three and a half years, I've worked in identity & access management at Ennovar while pursuing my degree full-time at Wichita State University.
+        </p>
+        <p>
+          Since June 2025, I've also been interning in IT at Textron Aviation, supporting enterprise infrastructure in a manufacturing environment. My work spans user provisioning, access policy enforcement, endpoint configuration, and security tooling.
+        </p>
+        <p>
+          For my senior capstone, I led development on Honey Sentinel — an IoT-based beehive monitoring system that gave me hands-on experience with embedded systems, network architecture, and full-stack project delivery.
+        </p>
+      </div>
+      <div class="about-details">
+        <div class="about-detail-card">
+          <div class="label">Location</div>
+          <div class="value">Augusta, KS</div>
+        </div>
+        <div class="about-detail-card">
+          <div class="label">Degree</div>
+          <div class="value">BASc, Cybersecurity</div>
+        </div>
+        <div class="about-detail-card">
+          <div class="label">University</div>
+          <div class="value">Wichita State</div>
+        </div>
+        <div class="about-detail-card">
+          <div class="label">Focus Areas</div>
+          <div class="value">IAM &bull; NetSec &bull; IoT</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title">Where I've worked.</h2>
+    <p class="section-subtitle">Concurrent industry experience while completing my degree full-time.</p>
+
+    <div class="timeline">
+      <div class="timeline-item current">
+        <div class="timeline-header">
+          <span class="timeline-role">IT Intern</span>
+          <span class="timeline-date">Jun 2025 — Present</span>
+        </div>
+        <div class="timeline-company">Textron Aviation</div>
+        <div class="timeline-location">Wichita, KS &bull; On-site</div>
+        <p class="timeline-desc">
+          Supporting IT operations across enterprise environments including identity and access management, endpoint configuration, and security tooling. Working with cross-functional teams on infrastructure projects in an on-site manufacturing environment.
+        </p>
+        <div class="timeline-tags">
+          <span class="tag">Enterprise IT</span>
+          <span class="tag">IAM</span>
+          <span class="tag">Endpoint Management</span>
+          <span class="tag">Security Tooling</span>
+        </div>
+      </div>
+
+      <div class="timeline-item current">
+        <div class="timeline-header">
+          <span class="timeline-role">Identity & Access Management Analyst</span>
+          <span class="timeline-date">Nov 2022 — Present</span>
+        </div>
+        <div class="timeline-company">Ennovar</div>
+        <div class="timeline-location">Wichita, KS &bull; On-site &bull; Part-time</div>
+        <p class="timeline-desc">
+          Managing identity and access controls for enterprise clients, including user provisioning, access reviews, and policy enforcement. Utilizing PowerShell scripting to automate IAM workflows and improve operational efficiency.
+        </p>
+        <div class="timeline-tags">
+          <span class="tag">PowerShell</span>
+          <span class="tag">Access Control</span>
+          <span class="tag">User Provisioning</span>
+          <span class="tag">Policy Enforcement</span>
+          <span class="tag">Automation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">Projects</div>
+    <h2 class="section-title">What I've built.</h2>
+    <p class="section-subtitle">Featured capstone project from my senior year at Wichita State University.</p>
+
+    <div class="project-card">
+      <div class="project-banner">
+        <div class="project-banner-text">
+          <div class="project-banner-icon">&#127855;</div>
+          <div class="project-banner-name">Honey Sentinel</div>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-type">Senior Capstone Project &bull; Spring 2026</div>
+        <h3>IoT-Based Beehive Monitoring System</h3>
+        <p>
+          Honey Sentinel is an IoT system designed to help beekeepers track hive health remotely. The system uses a Raspberry Pi with environmental sensors to collect real-time temperature, humidity, and weight data, displayed through a web-based dashboard for remote monitoring.
+        </p>
+        <p>
+          As a core developer on a four-person team, I was responsible for system architecture, network design, deployment documentation, and testing. The project includes comprehensive documentation covering architecture, deployment guides, network design, test plans, isolation standards, operator runbooks, and data dictionaries.
+        </p>
+
+        <div class="project-highlights">
+          <div class="highlight">
+            <span class="highlight-dot"></span>
+            Real-time sensor data collection
+          </div>
+          <div class="highlight">
+            <span class="highlight-dot"></span>
+            Web-based monitoring dashboard
+          </div>
+          <div class="highlight">
+            <span class="highlight-dot"></span>
+            Raspberry Pi embedded platform
+          </div>
+          <div class="highlight">
+            <span class="highlight-dot"></span>
+            Full project documentation suite
+          </div>
+          <div class="highlight">
+            <span class="highlight-dot"></span>
+            Network architecture & security
+          </div>
+          <div class="highlight">
+            <span class="highlight-dot"></span>
+            Capstone competition entry
+          </div>
+        </div>
+
+        <div class="project-links">
+          <a href="https://github.com/SiegwardsHaven/honey-sentinel">&#9901; View on GitHub &#8599;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Skills</div>
+    <h2 class="section-title">What I work with.</h2>
+    <p class="section-subtitle">Technical skills developed through coursework and professional experience.</p>
+
+    <div class="skills-grid">
+      <div class="skill-category">
+        <div class="skill-category-icon">&#128274;</div>
+        <h3>Security</h3>
+        <div class="skill-list">
+          <div class="skill-item">Identity & Access Management</div>
+          <div class="skill-item">Network Security</div>
+          <div class="skill-item">Incident Response</div>
+          <div class="skill-item">Firewall Management (pfSense)</div>
+          <div class="skill-item">VPN Configuration</div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-icon">&#128187;</div>
+        <h3>Development & Scripting</h3>
+        <div class="skill-list">
+          <div class="skill-item">PowerShell</div>
+          <div class="skill-item">Python</div>
+          <div class="skill-item">Linux Administration</div>
+          <div class="skill-item">Git & GitHub</div>
+          <div class="skill-item">Bash Scripting</div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-icon">&#128225;</div>
+        <h3>Infrastructure & IoT</h3>
+        <div class="skill-list">
+          <div class="skill-item">Windows Server</div>
+          <div class="skill-item">Active Directory</div>
+          <div class="skill-item">Raspberry Pi / IoT</div>
+          <div class="skill-item">Network Architecture</div>
+          <div class="skill-item">Endpoint Management</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-label">Education</div>
+    <h2 class="section-title">Where I studied.</h2>
+    <p class="section-subtitle"></p>
+
+    <div class="edu-card">
+      <div class="edu-icon">&#127891;</div>
+      <div class="edu-info">
+        <h3>Wichita State University</h3>
+        <div class="edu-degree">Bachelor of Applied Science — Cybersecurity</div>
+        <div class="edu-date">Aug 2023 — May 2026</div>
+        <div class="edu-coursework-label">Relevant Coursework</div>
+        <div class="edu-coursework">
+          <span class="tag">Network Security</span>
+          <span class="tag">Incident Response</span>
+          <span class="tag">Human Factors Psychology</span>
+          <span class="tag">Senior Capstone Project</span>
+          <span class="tag">Systems Administration</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Get in touch.</h2>
+    <p class="section-subtitle">Open to full-time cybersecurity and IT opportunities after graduation in May 2026.</p>
+
+    <div class="contact-grid">
+      <a href="https://github.com/SiegwardsHaven" class="contact-card">
+        <div class="contact-icon">&#9901;</div>
+        <h3>GitHub</h3>
+        <p>SiegwardsHaven</p>
+      </a>
+      <a href="https://linkedin.com/in/brec-buster-862a06229" class="contact-card">
+        <div class="contact-icon">&#128101;</div>
+        <h3>LinkedIn</h3>
+        <p>Brec Buster</p>
+      </a>
+      <a href="mailto:" class="contact-card">
+        <div class="contact-icon">&#9993;</div>
+        <h3>Email</h3>
+        <p>Available on LinkedIn</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    &copy; 2026 Brec Buster. Built for Senior Capstone ePortfolio — Wichita State University.
+  </div>
+</footer>
+
+</body>
+</html>
