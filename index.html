@@ -361,7 +361,8 @@
     box-shadow: 0 12px 40px rgba(0,0,0,0.3);
   }
   .project-banner {
-    height: 240px;
+    height: 180px;
+    min-height: 180px;
     background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
     display: flex;
     align-items: center;
@@ -374,36 +375,32 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(circle at 20% 50%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 80% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+      radial-gradient(circle at 20% 50%, rgba(245, 158, 11, 0.12) 0%, transparent 45%),
+      radial-gradient(circle at 80% 50%, rgba(59, 130, 246, 0.12) 0%, transparent 45%);
   }
   .project-banner-image {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    position: relative;
+    z-index: 0;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
     object-position: center;
     opacity: 0.95;
+    display: block;
   }
   .project-banner-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(10, 15, 26, 0.65);
+    background: rgba(10, 15, 26, 0.35);
     z-index: 1;
   }
   .project-banner-text {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 0 1.5rem;
+    display: none;
   }
   .project-banner-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: #fff;
+    display: none;
   }
   .project-body { padding: 2rem; }
   .project-type {
@@ -782,9 +779,6 @@
       <div class="project-banner">
         <img class="project-banner-image" src="assets/Logo_Senior_Project.png" alt="Senior Project Logo">
         <div class="project-banner-overlay"></div>
-        <div class="project-banner-text">
-          <div class="project-banner-name">Honey Sentinel</div>
-        </div>
       </div>
       <div class="project-body">
         <div class="project-type">Senior Capstone Project &bull; Spring 2026</div>
