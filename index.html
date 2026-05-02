@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Brec Buster — Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
   :root {
     --bg-primary: #0a0f1a;
@@ -360,7 +361,7 @@
     box-shadow: 0 12px 40px rgba(0,0,0,0.3);
   }
   .project-banner {
-    height: 200px;
+    height: 240px;
     background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
     display: flex;
     align-items: center;
@@ -376,20 +377,33 @@
       radial-gradient(circle at 20% 50%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
       radial-gradient(circle at 80% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
   }
+  .project-banner-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.95;
+  }
+  .project-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 15, 26, 0.65);
+    z-index: 1;
+  }
   .project-banner-text {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     text-align: center;
-  }
-  .project-banner-icon {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+    padding: 0 1.5rem;
   }
   .project-banner-name {
     font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
     font-weight: 700;
     letter-spacing: -0.02em;
+    color: #fff;
   }
   .project-body { padding: 2rem; }
   .project-type {
@@ -514,11 +528,12 @@
     width: 64px;
     height: 64px;
     border-radius: 14px;
-    background: linear-gradient(135deg, var(--amber), #d97706);
+    background: linear-gradient(135deg, #ffc423, #c79600);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.8rem;
+    color: #1a1a1a;
   }
   .edu-info h3 {
     font-size: 1.3rem;
@@ -629,12 +644,12 @@
     <div class="hero-greeting">// Hello, I'm</div>
     <h1>Brec <span class="accent">Buster</span></h1>
     <p class="hero-description">
-      Cybersecurity professional and IT specialist with hands-on experience in identity & access management, network security, and IoT systems. Graduating from Wichita State University in May 2026.
+      Cybersecurity professional and IT specialist with hands-on experience in identity & access management, network security, and threat intelligence. Graduating from Wichita State University in May 2026.
     </p>
     <div class="hero-links">
-      <a href="https://github.com/SiegwardsHaven" class="btn-primary">&#9901; GitHub</a>
-      <a href="https://linkedin.com/in/brec-buster-862a06229" class="btn-outline">&#8594; LinkedIn</a>
-      <a href="#contact" class="btn-outline">&#9993; Contact</a>
+      <a href="https://github.com/SiegwardsHaven" class="btn-primary"><i class="fa-brands fa-github"></i> GitHub</a>
+      <a href="https://linkedin.com/in/brec-buster-862a06229" class="btn-outline"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+      <a href="#contact" class="btn-outline"><i class="fa-solid fa-envelope"></i> Contact</a>
     </div>
     <div class="hero-meta">
       <div class="hero-meta-item">
@@ -667,7 +682,7 @@
           Since June 2025, I've also been interning in IT at Textron Aviation, supporting enterprise infrastructure in a manufacturing environment. My work spans user provisioning, access policy enforcement, endpoint configuration, and security tooling.
         </p>
         <p>
-          For my senior capstone, I led development on Honey Sentinel — an IoT-based beehive monitoring system that gave me hands-on experience with embedded systems, network architecture, and full-stack project delivery.
+          For my senior capstone, I helped build Honey Sentinel — a simulated threat intelligence platform that captures malicious payloads using honeypots, analyzes attacker behavior with custom Python tooling, and maps activity to the MITRE ATT&CK framework using an ELK analytics pipeline.
         </p>
       </div>
       <div class="about-details">
@@ -685,7 +700,7 @@
         </div>
         <div class="about-detail-card">
           <div class="label">Focus Areas</div>
-          <div class="value">IAM &bull; NetSec &bull; IoT</div>
+          <div class="value">IAM &bull; NetSec &bull; Threat Intel</div>
         </div>
       </div>
     </div>
@@ -700,24 +715,6 @@
     <p class="section-subtitle">Concurrent industry experience while completing my degree full-time.</p>
 
     <div class="timeline">
-      <div class="timeline-item current">
-        <div class="timeline-header">
-          <span class="timeline-role">IT Intern</span>
-          <span class="timeline-date">Jun 2025 — Present</span>
-        </div>
-        <div class="timeline-company">Textron Aviation</div>
-        <div class="timeline-location">Wichita, KS &bull; On-site</div>
-        <p class="timeline-desc">
-          Supporting IT operations across enterprise environments including identity and access management, endpoint configuration, and security tooling. Working with cross-functional teams on infrastructure projects in an on-site manufacturing environment.
-        </p>
-        <div class="timeline-tags">
-          <span class="tag">Enterprise IT</span>
-          <span class="tag">IAM</span>
-          <span class="tag">Endpoint Management</span>
-          <span class="tag">Security Tooling</span>
-        </div>
-      </div>
-
       <div class="timeline-item current">
         <div class="timeline-header">
           <span class="timeline-role">Identity & Access Management Analyst</span>
@@ -736,6 +733,43 @@
           <span class="tag">Automation</span>
         </div>
       </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <span class="timeline-role">IT Intern</span>
+          <span class="timeline-date">Jun 2025 — Aug 2025</span>
+        </div>
+        <div class="timeline-company">Textron Aviation</div>
+        <div class="timeline-location">Wichita, KS &bull; On-site</div>
+        <p class="timeline-desc">
+          Supported IT operations across enterprise environments including identity and access management, endpoint configuration, and security tooling. Worked with cross-functional teams on infrastructure projects in an on-site manufacturing environment.
+        </p>
+        <div class="timeline-tags">
+          <span class="tag">Enterprise IT</span>
+          <span class="tag">IAM</span>
+          <span class="tag">Endpoint Management</span>
+          <span class="tag">Security Tooling</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <span class="timeline-role">IT Specialist</span>
+          <span class="timeline-date">Jun 2026 — Present</span>
+        </div>
+        <div class="timeline-company">Textron Aviation</div>
+        <div class="timeline-location">Wichita, KS &bull; On-site &bull; Full-time</div>
+        <p class="timeline-desc">
+          Beginning full-time support for enterprise IT and security operations, focusing on identity and access management, endpoint configuration, and infrastructure project delivery in a manufacturing environment.
+        </p>
+        <div class="timeline-tags">
+          <span class="tag">Enterprise IT</span>
+          <span class="tag">IAM</span>
+          <span class="tag">Endpoint Management</span>
+          <span class="tag">Security Tooling</span>
+          <span class="tag">Infrastructure</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -749,50 +783,54 @@
 
     <div class="project-card">
       <div class="project-banner">
+        <img src="assets/honey-sentinel-logo.png" alt="Honey Sentinel logo" class="project-banner-image">
+        <div class="project-banner-overlay"></div>
         <div class="project-banner-text">
-          <div class="project-banner-icon">&#127855;</div>
           <div class="project-banner-name">Honey Sentinel</div>
         </div>
       </div>
       <div class="project-body">
         <div class="project-type">Senior Capstone Project &bull; Spring 2026</div>
-        <h3>IoT-Based Beehive Monitoring System</h3>
+        <h3>Simulated Threat Intelligence Platform</h3>
         <p>
-          Honey Sentinel is an IoT system designed to help beekeepers track hive health remotely. The system uses a Raspberry Pi with environmental sensors to collect real-time temperature, humidity, and weight data, displayed through a web-based dashboard for remote monitoring.
+          Honey Sentinel is a low-cost, reproducible honeypot platform that captures, normalizes, and behaviorally profiles adversary activity inside a fully isolated Proxmox-hosted lab. The system pairs a Cowrie SSH honeypot and a Windows Server decoy with a centralized ELK (Elasticsearch, Logstash, Kibana) analytics pipeline.
         </p>
         <p>
-          As a core developer on a four-person team, I was responsible for system architecture, network design, deployment documentation, and testing. The project includes comprehensive documentation covering architecture, deployment guides, network design, test plans, isolation standards, operator runbooks, and data dictionaries.
+          A custom Python Behavioral Analyzer groups attacker sessions, maps MITRE ATT&CK techniques, and scores threat severity. The project is built with infrastructure-as-code using Terraform and Ansible, with Tailscale mesh networking for secure management access.
+        </p>
+        <p>
+          Built by a three-person team: Brec Buster, Alexander Pickett, and Abraham Navarrete-Moreno. Faculty Advisor: Joe Jabara.
         </p>
 
         <div class="project-highlights">
           <div class="highlight">
             <span class="highlight-dot"></span>
-            Real-time sensor data collection
+            Cowrie SSH honeypot + Windows decoy
           </div>
           <div class="highlight">
             <span class="highlight-dot"></span>
-            Web-based monitoring dashboard
+            ELK stack analytics pipeline
           </div>
           <div class="highlight">
             <span class="highlight-dot"></span>
-            Raspberry Pi embedded platform
+            MITRE ATT&CK technique mapping
           </div>
           <div class="highlight">
             <span class="highlight-dot"></span>
-            Full project documentation suite
+            Custom behavioral analysis engine
           </div>
           <div class="highlight">
             <span class="highlight-dot"></span>
-            Network architecture & security
+            Terraform + Ansible IaC deployment
           </div>
           <div class="highlight">
             <span class="highlight-dot"></span>
-            Capstone competition entry
+            Proxmox lab with VLAN isolation
           </div>
         </div>
 
         <div class="project-links">
-          <a href="https://github.com/SiegwardsHaven/honey-sentinel">&#9901; View on GitHub &#8599;</a>
+          <a href="https://github.com/SiegwardsHaven/honey-sentinel"><i class="fa-brands fa-github"></i> View on GitHub <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i></a>
         </div>
       </div>
     </div>
@@ -808,38 +846,38 @@
 
     <div class="skills-grid">
       <div class="skill-category">
-        <div class="skill-category-icon">&#128274;</div>
+        <div class="skill-category-icon"><i class="fa-solid fa-shield-halved"></i></div>
         <h3>Security</h3>
         <div class="skill-list">
           <div class="skill-item">Identity & Access Management</div>
           <div class="skill-item">Network Security</div>
           <div class="skill-item">Incident Response</div>
-          <div class="skill-item">Firewall Management (pfSense)</div>
-          <div class="skill-item">VPN Configuration</div>
+          <div class="skill-item">Honeypot Deployment (Cowrie)</div>
+          <div class="skill-item">MITRE ATT&CK Framework</div>
         </div>
       </div>
 
       <div class="skill-category">
-        <div class="skill-category-icon">&#128187;</div>
+        <div class="skill-category-icon"><i class="fa-solid fa-code"></i></div>
         <h3>Development & Scripting</h3>
         <div class="skill-list">
-          <div class="skill-item">PowerShell</div>
           <div class="skill-item">Python</div>
-          <div class="skill-item">Linux Administration</div>
+          <div class="skill-item">PowerShell</div>
+          <div class="skill-item">Bash / Shell Scripting</div>
           <div class="skill-item">Git & GitHub</div>
-          <div class="skill-item">Bash Scripting</div>
+          <div class="skill-item">Linux Administration</div>
         </div>
       </div>
 
       <div class="skill-category">
-        <div class="skill-category-icon">&#128225;</div>
-        <h3>Infrastructure & IoT</h3>
+        <div class="skill-category-icon"><i class="fa-solid fa-server"></i></div>
+        <h3>Infrastructure</h3>
         <div class="skill-list">
-          <div class="skill-item">Windows Server</div>
-          <div class="skill-item">Active Directory</div>
-          <div class="skill-item">Raspberry Pi / IoT</div>
-          <div class="skill-item">Network Architecture</div>
-          <div class="skill-item">Endpoint Management</div>
+          <div class="skill-item">ELK Stack (Elasticsearch, Logstash, Kibana)</div>
+          <div class="skill-item">Proxmox / Virtualization</div>
+          <div class="skill-item">Terraform & Ansible</div>
+          <div class="skill-item">Active Directory / Windows Server</div>
+          <div class="skill-item">Tailscale / VPN Networking</div>
         </div>
       </div>
     </div>
@@ -854,7 +892,7 @@
     <p class="section-subtitle"></p>
 
     <div class="edu-card">
-      <div class="edu-icon">&#127891;</div>
+      <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
       <div class="edu-info">
         <h3>Wichita State University</h3>
         <div class="edu-degree">Bachelor of Applied Science — Cybersecurity</div>
@@ -863,9 +901,9 @@
         <div class="edu-coursework">
           <span class="tag">Network Security</span>
           <span class="tag">Incident Response</span>
+          <span class="tag">Threat Intelligence</span>
           <span class="tag">Human Factors Psychology</span>
           <span class="tag">Senior Capstone Project</span>
-          <span class="tag">Systems Administration</span>
         </div>
       </div>
     </div>
@@ -881,17 +919,17 @@
 
     <div class="contact-grid">
       <a href="https://github.com/SiegwardsHaven" class="contact-card">
-        <div class="contact-icon">&#9901;</div>
+        <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
         <h3>GitHub</h3>
         <p>SiegwardsHaven</p>
       </a>
       <a href="https://linkedin.com/in/brec-buster-862a06229" class="contact-card">
-        <div class="contact-icon">&#128101;</div>
+        <div class="contact-icon"><i class="fa-brands fa-linkedin-in"></i></div>
         <h3>LinkedIn</h3>
         <p>Brec Buster</p>
       </a>
       <a href="mailto:" class="contact-card">
-        <div class="contact-icon">&#9993;</div>
+        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
         <h3>Email</h3>
         <p>Available on LinkedIn</p>
       </a>
